@@ -10,6 +10,7 @@ This is a server for wurst + 3!
 - Global Chat
 - Friend's Online
 - A shear coords function
+- Color names/rainbow for donators
 
 ## Contributing Guide
 
