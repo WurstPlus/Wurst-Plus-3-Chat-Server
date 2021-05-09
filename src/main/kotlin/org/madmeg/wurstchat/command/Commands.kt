@@ -14,9 +14,16 @@ class Commands {
 
     init {
         commands = arrayListOf()
-        commands.add(PingUpCommand())
+        //CLIENT
         commands.add(NewClient())
+
+        //MESSAGE
+        commands.add(DmUser())
+
+        //PINGS
+        commands.add(PingUpCommand())
         commands.add(PingDownCommand())
+        commands.add(PingRefresh())
     }
 
     fun getCommands(name: Class<*>): Command {
