@@ -9,7 +9,7 @@ This is a server for wurst + 3!
 - DMs
 - Global Chat
 - Friend's Online
-- a shear coords function
+- A shear coords function
 
 ## Contributing Guide
 
