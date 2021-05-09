@@ -1,2 +1,0 @@
-org/madmeg/testclient/Main.java
- org.madmeg.testclient.Main
