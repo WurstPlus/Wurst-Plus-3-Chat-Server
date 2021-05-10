@@ -16,7 +16,7 @@ import java.net.Socket
 @Register("dmUser", Types.MESSAGE, "dmuser")
 class DmUser: Command() {
     override fun onCall(socket: Socket, command: List<String>) {
-        val fromClient = Client(command[2], command[3])
+        val fromClient = clientManager.getClientFromUuid(command[3])!!
         val toClient = clientManager.getClientFromUuid(command[4])
         if(toClient == null){
             Sockets().sendData(socket, "server:dmuser:error1")
@@ -27,9 +27,15 @@ class DmUser: Command() {
             return
         }
         val msg = command[5]
-        val msgList = toClient.messages.get(fromClient)
-        msgList!!.add(msg)
-        toClient.messages.replace(fromClient, msgList)
+        if(toClient.messages.containsKey(fromClient)) {
+            val msgList = toClient.messages[fromClient]!!
+            msgList.add(msg)
+            toClient.messages.replace(fromClient, msgList)
+        }else{
+            val msgList = arrayListOf<String>()
+            msgList.add(msg)
+            toClient.messages.put(fromClient, msgList)
+        }
         Sockets().sendData(socket, "server:dmuser:sent")
     }
 }

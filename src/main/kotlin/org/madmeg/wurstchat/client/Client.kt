@@ -17,4 +17,8 @@ class Client(username: String, uuid: String) {
         this.online = false
         this.messages = mutableMapOf()
     }
+
+    fun addToMessages(client: Client, list: ArrayList<String>){
+
+    }
 }

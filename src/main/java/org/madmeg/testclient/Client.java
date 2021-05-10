@@ -27,5 +27,26 @@ public class Client {
         ClientSocket.sendData(s, prefix+"pinggetdm:madmeg:123");
         System.out.println(ClientSocket.getData(s).readLine());
         s.close();
+
+        s = ClientSocket.connect();
+        ClientSocket.sendData(s, prefix+"newclient:madmeg3:126");
+        System.out.println(ClientSocket.getData(s).readLine());
+        s.close();
+
+        s = ClientSocket.connect();
+        ClientSocket.sendData(s, prefix+"pingup:madmeg3:126");
+        System.out.println(ClientSocket.getData(s).readLine());
+        s.close();
+
+        s = ClientSocket.connect();
+        ClientSocket.sendData(s, prefix+"dmuser:madmeg3:126:123:hello Madmeg");
+        System.out.println(ClientSocket.getData(s).readLine());
+        s.close();
+
+        s = ClientSocket.connect();
+        ClientSocket.sendData(s, prefix+"pinggetdm:madmeg:123");
+        System.out.println(ClientSocket.getData(s).readLine());
+        s.close();
+
     }
 }
