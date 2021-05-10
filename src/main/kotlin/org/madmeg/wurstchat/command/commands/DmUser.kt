@@ -26,5 +26,10 @@ class DmUser: Command() {
             Sockets().sendData(socket, "server:dmuser:error2")
             return
         }
+        val msg = command[5]
+        val msgList = toClient.messages.get(fromClient)
+        msgList!!.add(msg)
+        toClient.messages.replace(fromClient, msgList)
+        Sockets().sendData(socket, "server:dmuser:sent")
     }
 }

@@ -23,7 +23,7 @@ class Commands {
         //PINGS
         commands.add(PingUpCommand())
         commands.add(PingDownCommand())
-        commands.add(PingRefresh())
+        commands.add(PingGetDm())
     }
 
     fun getCommands(name: Class<*>): Command {
