@@ -18,11 +18,7 @@ import java.net.Socket
 class PingUpCommand: Command() {
     override fun onCall(socket: Socket, command: List<String>) {
         Print("Pinged Up from client")
-        for(c in clientManager.clients){
-            if(c.uuid == command[2]){
-                c.online = true
-            }
-        }
+        clientManager.getClientFromUuid(command[3])!!.online = true
         Sockets().sendData(socket, "server:pingup")
     }
 }

@@ -15,11 +15,11 @@ import java.net.Socket
  */
 
 @Register("NewClient", Types.CLIENT, "newclient")
-class NewClient : Command() {
+class NewClient : Command() { // name = 2 uuid = 3
     override fun onCall(socket: Socket, command: List<String>) {
         var flag = false
         for (c in clientManager.clients) {
-            if(command[2] == c.uuid){
+            if(command[3] == c.uuid){
                 flag = true
             }
         }

@@ -17,11 +17,7 @@ import java.net.Socket
 class PingDownCommand: Command() {
     override fun onCall(socket: Socket, command: List<String>) {
         Print("Pinged Down from client")
-        for(c in clientManager.clients){
-            if(c.uuid == command[2]){
-                c.online = false
-            }
-        }
+        clientManager.getClientFromUuid(command[3])!!.online = false
         Sockets().sendData(socket, "server:pingdown")
     }
 }
