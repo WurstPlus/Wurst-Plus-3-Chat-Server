@@ -10,8 +10,7 @@ import java.net.Socket;
 
 public class ClientSocket {
     public static Socket connect() throws IOException {
-        Socket socket = new Socket("0.0.0.0", 4200);
-        return socket;
+        return new Socket("0.0.0.0", 4200);
     }
 
     public static BufferedReader getData(Socket socket) throws IOException {
