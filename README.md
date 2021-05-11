@@ -6,7 +6,7 @@ This is a server for wurst + 3!
 ## Ideas 
 
 - Friend requests
-- DMs
+- <s>DMs</s>
 - Global Chat
 - Friend's Online
 - A share coords function
