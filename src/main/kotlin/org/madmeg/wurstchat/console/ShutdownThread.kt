@@ -32,7 +32,7 @@ class ShutdownThread: Thread() {
                 for(i in m){
                     len++
                     if(len >= m.size){
-                        msg += "$i]-"
+                        msg += "$i];"
                     }else{
                         msg += "$i|"
                     }
