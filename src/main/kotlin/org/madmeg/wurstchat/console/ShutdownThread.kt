@@ -22,12 +22,12 @@ class ShutdownThread: Thread() {
 
     private fun saveClientData(){
         val mainObject = JsonObject()
-        for(c in clientManager.clients) {
+        for(c in clientManager.clients) { //TODO fix this
             val messageObject = JsonObject()
             var msg = ""
             for(v in c.messages.keys){
                 msg += "${c.uuid}["
-                val m = c.messages[c]!!
+                val m = c.messages[v]!!
                 var len = 0
                 for(i in m){
                     len++

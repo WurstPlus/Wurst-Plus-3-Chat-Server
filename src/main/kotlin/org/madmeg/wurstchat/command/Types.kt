@@ -9,5 +9,6 @@ package org.madmeg.wurstchat.command
 enum class Types {
     MESSAGE,
     CLIENT,
-    PING
+    PING,
+    ADMIN
 }

@@ -14,7 +14,7 @@ import org.madmeg.wurstchat.networking.Sockets
 
 val PORT = 4200
 var clientManager: ClientManager = ClientManager()
-val running: Boolean = true
+var running: Boolean = true
 
 class Main {
     val clientThreads: ArrayList<ClientThread> = arrayListOf()
@@ -30,9 +30,10 @@ class Main {
             val cSocket = Sockets().receiveSocket(socket)
             val thread = ClientThread(cSocket, this)
             clientThreads.add(thread)
-            Print("Starting new thread for ${cSocket.inetAddress}")
+                    Print("Starting new thread for ${cSocket.inetAddress}")
             thread.start()
         }
+        Print("asd")
     }
 }
 

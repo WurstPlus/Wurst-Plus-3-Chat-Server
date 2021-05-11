@@ -29,7 +29,7 @@ class PingGetDm: Command() {
             for(i in msg){
                 len++
                 if(len >= msg.size){
-                    toSend += "$i]-"
+                    toSend += "$i];"
                 }else {
                     toSend += "$i|"
                 }

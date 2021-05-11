@@ -24,6 +24,9 @@ class Commands {
         commands.add(PingUpCommand())
         commands.add(PingDownCommand())
         commands.add(PingGetDm())
+
+        //ADMIN
+        commands.add(ShutdownCommand())
     }
 
     fun getCommands(name: Class<*>): Command {

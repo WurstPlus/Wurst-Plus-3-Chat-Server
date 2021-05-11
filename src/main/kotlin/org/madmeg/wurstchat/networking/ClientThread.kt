@@ -1,6 +1,7 @@
 package org.madmeg.wurstchat.networking
 
 import org.madmeg.wurstchat.Main
+import org.madmeg.wurstchat.console.Print
 import java.net.Socket
 
 /**
@@ -25,7 +26,12 @@ class ClientThread(socket: Socket, parent: Main): Thread() {
 
         for(c in parent.commands.commands){
             if(command[1] == c.syntax && command[0] == "client"){
-                c.onCall(socket, command)
+                if(c.secureKey == "") {
+                    c.onCall(socket, command)
+                }
+                else if(c.secureKey == command[2]){
+                    c.onCall(socket, command)
+                }
             }
         }
     }

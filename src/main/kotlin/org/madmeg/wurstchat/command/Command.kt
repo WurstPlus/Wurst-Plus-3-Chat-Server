@@ -15,6 +15,7 @@ open class Command {
     val name = getReg().name
     val type = getReg().type
     val syntax = getReg().syntax
+    val secureKey = getReg().secureKey
 
     open fun onCall(socket: Socket, command: List<String>){
     }
