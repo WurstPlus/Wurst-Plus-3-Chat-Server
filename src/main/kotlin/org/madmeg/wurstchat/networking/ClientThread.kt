@@ -1,6 +1,7 @@
 package org.madmeg.wurstchat.networking
 
 import org.madmeg.wurstchat.Main
+import org.madmeg.wurstchat.clientManager
 import org.madmeg.wurstchat.console.Print
 import org.madmeg.wurstchat.getIllegalChars
 import java.net.Socket
@@ -24,9 +25,9 @@ class ClientThread(socket: Socket, parent: Main) : Thread() {
 
         val data = reader.readLine() // Reads the data
         val command = data.split(":") // Splits command
-        for(i in command){
-            for(x in getIllegalChars()){
-                if(i.contains(x)){
+        for (i in command) {
+            for (x in getIllegalChars()) {
+                if (i.contains(x)) {
                     Sockets().sendData(socket, "server:error1")
                     return
                 }
@@ -38,7 +39,12 @@ class ClientThread(socket: Socket, parent: Main) : Thread() {
                 if (command[1] == c.syntax && command[0] == "client") {
                     try {
                         if (c.secureKey == "") {
-                            c.onCall(socket, command)
+                            val client = clientManager.getClientFromUuid(command[3])!!
+                            if(client.username != command[2]){
+                                Sockets().sendData(socket, "server:error4")
+                                return
+                            }
+                            c.onCall(socket, command, client)
                         } else if (c.secureKey == command[2]) {
                             c.onCall(socket, command)
                         }

@@ -1,11 +1,10 @@
 package org.madmeg.wurstchat.command.commands
 
-import org.madmeg.wurstchat.client.ClientManager
+import org.madmeg.wurstchat.client.Client
 import org.madmeg.wurstchat.clientManager
 import org.madmeg.wurstchat.command.Command
 import org.madmeg.wurstchat.command.Register
 import org.madmeg.wurstchat.command.Types
-import org.madmeg.wurstchat.console.Print
 import org.madmeg.wurstchat.networking.Sockets
 import java.net.Socket
 
@@ -16,15 +15,15 @@ import java.net.Socket
 
 @Register("PingGetDm", Types.PING, "pinggetdm")
 class PingGetDm: Command() {
-    override fun onCall(socket: Socket, command: List<String>) {
-        val client = clientManager.getClientFromUuid(command[3])
+    override fun onCall(socket: Socket, command: List<String>, fromClient: Client) {
+        //val fromClient = clientManager.getClientFromUuid(command[3])
         var toSend = ":"
-        if(client!!.messages.keys.isEmpty()){
+        if(fromClient.messages.keys.isEmpty()){
             Sockets().sendData(socket, "server:pinggetdm:none")
         }
-        for(c in client.messages.keys){
+        for(c in fromClient.messages.keys){
             toSend += "${c.uuid}["
-            val msg = client.messages[c]!!
+            val msg = fromClient.messages[c]!!
             var len = 0;
             for(i in msg){
                 len++

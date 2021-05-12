@@ -1,5 +1,6 @@
 package org.madmeg.wurstchat.command.commands
 
+import org.madmeg.wurstchat.client.Client
 import org.madmeg.wurstchat.client.ClientManager
 import org.madmeg.wurstchat.clientManager
 import org.madmeg.wurstchat.command.Command
@@ -16,7 +17,8 @@ import java.net.Socket
 
 @Register("PingUp", Types.PING, "pingup")
 class PingUpCommand: Command() {
-    override fun onCall(socket: Socket, command: List<String>) {
+    override fun onCall(socket: Socket, command: List<String>, fromClient: Client) {
+        fromClient.online = false
         clientManager.getClientFromUuid(command[3])!!.online = true
         Sockets().sendData(socket, "server:pingup")
     }

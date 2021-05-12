@@ -1,5 +1,6 @@
 package org.madmeg.wurstchat.command
 
+import org.madmeg.wurstchat.client.Client
 import java.net.Socket
 
 /**
@@ -16,6 +17,9 @@ open class Command {
     val type = getReg().type
     val syntax = getReg().syntax
     val secureKey = getReg().secureKey
+
+    open fun onCall(socket: Socket, command: List<String>, fromClient: Client){
+    }
 
     open fun onCall(socket: Socket, command: List<String>){
     }

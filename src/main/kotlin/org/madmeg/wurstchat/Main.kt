@@ -38,7 +38,6 @@ class Main {
             clientThreads.add(thread)
             Print("Starting new thread for ${cSocket.inetAddress}")
             thread.start()
-
             if(globalChat.messages.size >= 100000){ // cleans global chat
                 globalChat.messages.clear()
                 Print("Cleaned global chat")

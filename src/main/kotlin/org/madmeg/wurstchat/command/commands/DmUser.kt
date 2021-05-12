@@ -15,8 +15,8 @@ import java.net.Socket
 
 @Register("dmUser", Types.MESSAGE, "dmuser")
 class DmUser: Command() {
-    override fun onCall(socket: Socket, command: List<String>) {
-        val fromClient = clientManager.getClientFromUuid(command[3])!!
+    override fun onCall(socket: Socket, command: List<String>, fromClient: Client) {
+        //val fromClient = clientManager.getClientFromUuid(command[3])!!
         val toClient = clientManager.getClientFromUuid(command[4])
         if(toClient == null){
             Sockets().sendData(socket, "server:dmuser:error1")
