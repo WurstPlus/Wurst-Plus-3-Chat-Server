@@ -43,12 +43,11 @@ public class Client {
         System.out.println(ClientSocket.getData(s).readLine());
         s.close();
 
-        /*
         s = ClientSocket.connect();
         ClientSocket.sendData(s, prefix+"shutdown:133333");
         System.out.println(ClientSocket.getData(s).readLine());
         s.close();
-         */
+
 
     }
 }

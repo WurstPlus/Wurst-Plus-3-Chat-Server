@@ -22,8 +22,10 @@ class LoadData {
         val jsonObject: JsonObject = element.asJsonObject
         for(clients in jsonObject.keySet()){
             val info = jsonObject.get(clients).asString.split(":")
-            clientManager.clients.add(Client(info[0], clients))
-            clientManager.getClientFromUuid(clients)!!.muted = info[1] == "true"
+            val c = Client(info[0], clients)
+            clientManager.clients.add(c)
+            c.muted = info[1] == "true"
+            c.key = info[2]
         }
     }
 

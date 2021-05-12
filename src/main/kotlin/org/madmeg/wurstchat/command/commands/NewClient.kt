@@ -24,8 +24,9 @@ class NewClient : Command() { // name = 2 uuid = 3
             }
         }
         if(!flag) {
-            clientManager.clients.add(Client(command[2], command[3]))
-            Sockets().sendData(socket, "server:newclient:true")
+            val c = Client(command[2], command[3])
+            clientManager.clients.add(c)
+            Sockets().sendData(socket, "server:newclient:true:${c.key}")
         }else {
             Sockets().sendData(socket, "server:newclient:false")
         }
