@@ -16,9 +16,11 @@ class Commands {
         commands = arrayListOf()
         //CLIENT
         commands.add(NewClient())
+        commands.add(GetClientFromUuid())
 
         //MESSAGE
         commands.add(DmUser())
+        commands.add(PostToGlobal())
 
         //PINGS
         commands.add(PingUpCommand())

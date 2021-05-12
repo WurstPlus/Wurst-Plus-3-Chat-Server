@@ -6,6 +6,7 @@ import org.madmeg.wurstchat.console.LoadData
 import org.madmeg.wurstchat.console.Print
 import org.madmeg.wurstchat.console.ShutdownThread
 import org.madmeg.wurstchat.networking.ClientThread
+import org.madmeg.wurstchat.networking.GlobalChat
 import org.madmeg.wurstchat.networking.Sockets
 
 /**
@@ -16,6 +17,7 @@ import org.madmeg.wurstchat.networking.Sockets
 val PORT = 4200
 var clientManager: ClientManager = ClientManager()
 var running: Boolean = true
+val globalChat: GlobalChat = GlobalChat()
 
 class Main {
     val clientThreads: ArrayList<ClientThread> = arrayListOf()
