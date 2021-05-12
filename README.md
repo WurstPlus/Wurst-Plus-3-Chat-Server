@@ -7,7 +7,7 @@ This is a server for wurst + 3!
 
 - Friend requests
 - <s>DMs</s>
-- Global Chat
+- <s>Global Chat</s>
 - Friend's Online
 - A share coords function
 - Color/rainbow names for donators
