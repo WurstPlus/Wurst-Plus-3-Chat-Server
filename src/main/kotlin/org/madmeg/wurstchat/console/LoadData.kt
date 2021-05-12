@@ -21,7 +21,9 @@ class LoadData {
         val element = jsonParser.parse(reader)
         val jsonObject: JsonObject = element.asJsonObject
         for(clients in jsonObject.keySet()){
-            clientManager.clients.add(Client(jsonObject.get(clients).asString, clients))
+            val info = jsonObject.get(clients).asString.split(":")
+            clientManager.clients.add(Client(info[0], clients))
+            clientManager.getClientFromUuid(clients)!!.muted = info[1] == "true"
         }
     }
 

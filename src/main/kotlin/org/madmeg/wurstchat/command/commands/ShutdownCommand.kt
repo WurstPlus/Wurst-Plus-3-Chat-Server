@@ -5,7 +5,6 @@ import org.madmeg.wurstchat.command.Register
 import org.madmeg.wurstchat.command.Types
 import org.madmeg.wurstchat.console.Print
 import org.madmeg.wurstchat.networking.Sockets
-import org.madmeg.wurstchat.running
 import java.net.Socket
 import kotlin.system.exitProcess
 

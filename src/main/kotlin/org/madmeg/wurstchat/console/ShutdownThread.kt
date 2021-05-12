@@ -54,7 +54,7 @@ class ShutdownThread: Thread() {
     private fun saveClients(){
         val mainObject = JsonObject()
         for(c in clientManager.clients){
-            mainObject.addProperty(c.uuid, c.username)
+            mainObject.addProperty(c.uuid, c.username+":"+c.muted)
         }
         val file = File("db\\clients.json")
         if(!Files.exists(Paths.get("db\\"))){

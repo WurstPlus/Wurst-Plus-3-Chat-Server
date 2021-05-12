@@ -27,6 +27,7 @@ class Commands {
 
         //ADMIN
         commands.add(ShutdownCommand())
+        commands.add(MuteCommand())
     }
 
     fun getCommands(name: Class<*>): Command {

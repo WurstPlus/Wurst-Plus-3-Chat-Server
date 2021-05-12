@@ -17,7 +17,6 @@ import java.net.Socket
 @Register("PingUp", Types.PING, "pingup")
 class PingUpCommand: Command() {
     override fun onCall(socket: Socket, command: List<String>) {
-        Print("Pinged Up from client")
         clientManager.getClientFromUuid(command[3])!!.online = true
         Sockets().sendData(socket, "server:pingup")
     }

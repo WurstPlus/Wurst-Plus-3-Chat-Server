@@ -34,10 +34,9 @@ class Main {
             val cSocket = Sockets().receiveSocket(socket)
             val thread = ClientThread(cSocket, this)
             clientThreads.add(thread)
-                    Print("Starting new thread for ${cSocket.inetAddress}")
+            Print("Starting new thread for ${cSocket.inetAddress}")
             thread.start()
         }
-        Print("asd")
     }
 }
 

@@ -25,7 +25,6 @@ class NewClient : Command() { // name = 2 uuid = 3
         }
         if(!flag) {
             clientManager.clients.add(Client(command[2], command[3]))
-            Print("New client added --> Username: ${command[2]}")
             Sockets().sendData(socket, "server:newclient:true")
         }else {
             Sockets().sendData(socket, "server:newclient:false")

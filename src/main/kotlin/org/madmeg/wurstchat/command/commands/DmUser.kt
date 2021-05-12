@@ -26,6 +26,10 @@ class DmUser: Command() {
             Sockets().sendData(socket, "server:dmuser:error2")
             return
         }
+        if(fromClient.muted){
+            Sockets().sendData(socket, "server:dmuser:error3")
+            return
+        }
         val msg = command[5]
         if(toClient.messages.containsKey(fromClient)) {
             val msgList = toClient.messages[fromClient]!!
