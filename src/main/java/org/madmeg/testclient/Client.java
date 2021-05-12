@@ -44,6 +44,11 @@ public class Client {
         s.close();
 
         s = ClientSocket.connect();
+        ClientSocket.sendData(s, prefix+"dmuser:madmeg3:126:123:hello madmeg1213123");
+        System.out.println(ClientSocket.getData(s).readLine());
+        s.close();
+
+        s = ClientSocket.connect();
         ClientSocket.sendData(s, prefix+"pinggetdm:madmeg:123");
         System.out.println(ClientSocket.getData(s).readLine());
         s.close();

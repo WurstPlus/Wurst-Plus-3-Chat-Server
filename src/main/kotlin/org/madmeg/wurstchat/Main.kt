@@ -2,6 +2,7 @@ package org.madmeg.wurstchat
 
 import org.madmeg.wurstchat.client.ClientManager
 import org.madmeg.wurstchat.command.Commands
+import org.madmeg.wurstchat.console.LoadData
 import org.madmeg.wurstchat.console.Print
 import org.madmeg.wurstchat.console.ShutdownThread
 import org.madmeg.wurstchat.networking.ClientThread
@@ -21,6 +22,9 @@ class Main {
     var commands: Commands = Commands()
     init {
         Print("Starting Wurst Server!")
+        Print("Loading Data!")
+        LoadData().loadClients()
+        LoadData().loadMessages()
         clientThreads.clear()
         val socket = Sockets().openPort()
         Print("Started Wurst server on port $PORT!")

@@ -1,5 +1,6 @@
 package org.madmeg.wurstchat.console
 
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import org.madmeg.wurstchat.clientManager
 import java.io.File
@@ -17,31 +18,45 @@ import java.nio.file.Paths
 class ShutdownThread: Thread() {
     override fun run() {
         Print("Saving Client's data")
+        saveClients()
         saveClientData()
     }
 
     private fun saveClientData(){
         val mainObject = JsonObject()
-        for(c in clientManager.clients) { //TODO fix this
+        for(c in clientManager.clients) {
             val messageObject = JsonObject()
-            var msg = ""
             for(v in c.messages.keys){
-                msg += "${c.uuid}["
+                val clientArray = JsonArray()
                 val m = c.messages[v]!!
-                var len = 0
                 for(i in m){
-                    len++
-                    if(len >= m.size){
-                        msg += "$i];"
-                    }else{
-                        msg += "$i|"
-                    }
+                    clientArray.add(i)
                 }
+                messageObject.add(v.uuid, clientArray)
             }
-            messageObject.addProperty("messages", msg)
+
             mainObject.add(c.uuid, messageObject)
         }
         val file = File("db\\chatlogs.json")
+        if(!Files.exists(Paths.get("db\\"))){
+            Files.createDirectories(Paths.get("db\\"))
+        }
+        try {
+            val fileWriter = FileWriter(file)
+            fileWriter.write(mainObject.toString())
+            fileWriter.close()
+            file.createNewFile()
+        }catch (e: IOException){
+            Print("An error occurred with file saving $e")
+        }
+    }
+
+    private fun saveClients(){
+        val mainObject = JsonObject()
+        for(c in clientManager.clients){
+            mainObject.addProperty(c.uuid, c.username)
+        }
+        val file = File("db\\clients.json")
         if(!Files.exists(Paths.get("db\\"))){
             Files.createDirectories(Paths.get("db\\"))
         }
