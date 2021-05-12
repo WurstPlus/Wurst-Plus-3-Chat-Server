@@ -16,9 +16,15 @@ import java.net.Socket
 class PostToGlobal: Command() {
     override fun onCall(socket: Socket, command: List<String>) {
         val client = clientManager.getClientFromUuid(command[3])!!
+        if(client.muted){
+            Sockets().sendData(socket, "server:postglobal:error1")
+            return
+        }
         var count = 0
-        for(i in globalChat.messages.keys){
-            count++
+        if(globalChat.messages.isNotEmpty()) {
+            for (i in globalChat.messages.keys) {
+                count++
+            }
         }
         globalChat.messages.put(count, Pair(client, command[4]))
         Sockets().sendData(socket, "server:postglobal:posted")

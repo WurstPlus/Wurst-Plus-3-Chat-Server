@@ -2,6 +2,7 @@ package org.madmeg.wurstchat.networking
 
 import org.madmeg.wurstchat.Main
 import org.madmeg.wurstchat.console.Print
+import org.madmeg.wurstchat.getIllegalChars
 import java.net.Socket
 
 /**
@@ -23,6 +24,14 @@ class ClientThread(socket: Socket, parent: Main) : Thread() {
 
         val data = reader.readLine() // Reads the data
         val command = data.split(":") // Splits command
+        for(i in command){
+            for(x in getIllegalChars()){
+                if(i.contains(x)){
+                    Sockets().sendData(socket, "server:error1")
+                    return
+                }
+            }
+        }
 
         for (c in parent.commands.commands) {
             try {
@@ -34,15 +43,21 @@ class ClientThread(socket: Socket, parent: Main) : Thread() {
                             c.onCall(socket, command)
                         }
                     } catch (e: IndexOutOfBoundsException) {
+                        Sockets().sendData(socket, "server:error2")
                         return
                     } catch (e: Exception) {
                         Print("A Exception occurred in commands $e")
+                        Sockets().sendData(socket, "server:error3")
+                        return
                     }
                 }
             } catch (e: IndexOutOfBoundsException) {
+                Sockets().sendData(socket, "server:error2")
                 return
             } catch (e: Exception) {
                 Print("A Exception occurred in commands loop $e")
+                Sockets().sendData(socket, "server:error3")
+                return
             }
 
         }

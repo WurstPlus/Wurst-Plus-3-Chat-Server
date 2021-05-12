@@ -24,37 +24,7 @@ public class Client {
         s.close();
 
         s = ClientSocket.connect();
-        ClientSocket.sendData(s, prefix+"pinggetdm:madmeg:123");
-        System.out.println(ClientSocket.getData(s).readLine());
-        s.close();
-
-        s = ClientSocket.connect();
-        ClientSocket.sendData(s, prefix+"newclient:madmeg3:126");
-        System.out.println(ClientSocket.getData(s).readLine());
-        s.close();
-
-        s = ClientSocket.connect();
-        ClientSocket.sendData(s, prefix+"pingup:madmeg3:126");
-        System.out.println(ClientSocket.getData(s).readLine());
-        s.close();
-
-        s = ClientSocket.connect();
-        ClientSocket.sendData(s, prefix+"dmuser:madmeg3:126:123:hello Madmeg");
-        System.out.println(ClientSocket.getData(s).readLine());
-        s.close();
-
-        s = ClientSocket.connect();
-        ClientSocket.sendData(s, prefix+"dmuser:madmeg3:126:123:hello madmeg1213123");
-        System.out.println(ClientSocket.getData(s).readLine());
-        s.close();
-
-        s = ClientSocket.connect();
-        ClientSocket.sendData(s, prefix+"pinggetdm:madmeg:123");
-        System.out.println(ClientSocket.getData(s).readLine());
-        s.close();
-
-        s = ClientSocket.connect();
-        ClientSocket.sendData(s, prefix+"postglobal:123:hello global chat");
+        ClientSocket.sendData(s, prefix+"postglobal:madmeg:123:hello global chat");
         System.out.println(ClientSocket.getData(s).readLine());
         s.close();
 
@@ -63,12 +33,22 @@ public class Client {
         System.out.println(ClientSocket.getData(s).readLine());
         s.close();
 
+        s = ClientSocket.connect();
+        ClientSocket.sendData(s, prefix+"postglobal:madmeg:123:wag1");
+        System.out.println(ClientSocket.getData(s).readLine());
+        s.close();
 
+        s = ClientSocket.connect();
+        ClientSocket.sendData(s, prefix+"pinggetglobal:madmeg:123");
+        System.out.println(ClientSocket.getData(s).readLine());
+        s.close();
 
+        /*
         s = ClientSocket.connect();
         ClientSocket.sendData(s, prefix+"shutdown:133333");
         System.out.println(ClientSocket.getData(s).readLine());
         s.close();
+         */
 
     }
 }
