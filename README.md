@@ -9,7 +9,6 @@ This is a server for wurst + 3!
 - <s>DMs</s>
 - <s>Global Chat</s>
 - Friend's Online
-- A share coords function
 - Color/rainbow names for donators
 - VPI Chat
 
