@@ -3,9 +3,10 @@
 
 This is a server for wurst + 3!
 
-## Ideas 
+## Ideas/TODO
 
 - Friend requests
+- Secure key for clients
 - <s>DMs</s>
 - <s>Global Chat</s>
 - Friend's Online
