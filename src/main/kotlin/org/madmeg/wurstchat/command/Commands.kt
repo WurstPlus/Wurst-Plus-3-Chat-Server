@@ -26,6 +26,7 @@ class Commands {
         commands.add(PingUpCommand())
         commands.add(PingDownCommand())
         commands.add(PingGetDm())
+        commands.add(PingGetGlobal())
 
         //ADMIN
         commands.add(ShutdownCommand())

@@ -8,7 +8,7 @@ import org.madmeg.wurstchat.client.Client
  */
 
 class GlobalChat {
-    val messages: MutableMap<Client, ArrayList<String>>
+    val messages: MutableMap<Int, Pair<Client, String>>
     init {
         this.messages = mutableMapOf()
     }

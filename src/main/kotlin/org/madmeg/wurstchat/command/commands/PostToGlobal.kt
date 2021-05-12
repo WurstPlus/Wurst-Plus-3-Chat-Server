@@ -5,6 +5,7 @@ import org.madmeg.wurstchat.command.Command
 import org.madmeg.wurstchat.command.Register
 import org.madmeg.wurstchat.command.Types
 import org.madmeg.wurstchat.globalChat
+import org.madmeg.wurstchat.networking.Sockets
 import java.net.Socket
 
 /**
@@ -15,14 +16,11 @@ import java.net.Socket
 class PostToGlobal: Command() {
     override fun onCall(socket: Socket, command: List<String>) {
         val client = clientManager.getClientFromUuid(command[3])!!
-        if(globalChat.messages.containsKey(client)){
-            val msgList = globalChat.messages.get(client)!!
-            msgList.add(command[4])
-            globalChat.messages.replace(client, msgList)
-        }else{
-            val msgList = arrayListOf<String>()
-            msgList.add(command[4])
-            globalChat.messages.put(client, msgList)
+        var count = 0
+        for(i in globalChat.messages.keys){
+            count++
         }
+        globalChat.messages.put(count, Pair(client, command[4]))
+        Sockets().sendData(socket, "server:postglobal:posted")
     }
 }

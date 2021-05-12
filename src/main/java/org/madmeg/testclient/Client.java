@@ -54,6 +54,18 @@ public class Client {
         s.close();
 
         s = ClientSocket.connect();
+        ClientSocket.sendData(s, prefix+"postglobal:123:hello global chat");
+        System.out.println(ClientSocket.getData(s).readLine());
+        s.close();
+
+        s = ClientSocket.connect();
+        ClientSocket.sendData(s, prefix+"pinggetglobal:madmeg:123");
+        System.out.println(ClientSocket.getData(s).readLine());
+        s.close();
+
+
+
+        s = ClientSocket.connect();
         ClientSocket.sendData(s, prefix+"shutdown:133333");
         System.out.println(ClientSocket.getData(s).readLine());
         s.close();

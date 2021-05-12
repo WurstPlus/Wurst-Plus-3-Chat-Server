@@ -16,9 +16,13 @@ import java.net.Socket
 class PingGetGlobal: Command() {
     override fun onCall(socket: Socket, command: List<String>) {
         val client = clientManager.getClientFromUuid(command[3])
-        val toSend = ":"
+        var toSend = ":"
         if(globalChat.messages.isEmpty()){
-            Sockets().sendData(socket, "server:")
+            Sockets().sendData(socket, "server:pinggetglobal:none")
         }
+        for(c in globalChat.messages.keys){
+            toSend += "$c|"+ globalChat.messages[c]!!.first.uuid+"|"+ globalChat.messages[c]!!.second +";"
+        }
+        Sockets().sendData(socket, "server:pinggetglobal$toSend")
     }
 }
