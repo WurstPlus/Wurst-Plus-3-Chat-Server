@@ -39,8 +39,9 @@ class ClientThread(socket: Socket, parent: Main) : Thread() {
                 if (command[1] == c.syntax && command[0] == "client") {
                     try {
                         if (c.secureKey == "") {
+                            c.onCall(socket, command)
                             val client = clientManager.getClientFromUuid(command[3])!!
-                            if(client.username != command[2]){
+                            if(command[2] != client.username|| command[4] != client.key){
                                 Sockets().sendData(socket, "server:error4")
                                 return
                             }

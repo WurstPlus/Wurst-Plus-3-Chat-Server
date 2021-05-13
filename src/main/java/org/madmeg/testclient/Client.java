@@ -12,6 +12,7 @@ import java.net.Socket;
 
 public class Client {
     static String prefix = "client:";
+    static String key = "qruD/UX4Eri8rImIFnKVinNljf/DJ6mJKj5ZUXSavo4=";
     public static void main(String[] args) throws IOException {
         Socket s = ClientSocket.connect();
         ClientSocket.sendData(s, prefix+"newclient:madmeg:123");
@@ -19,27 +20,27 @@ public class Client {
         s.close();
 
         s = ClientSocket.connect();
-        ClientSocket.sendData(s, prefix+"pingup:madmeg:123");
+        ClientSocket.sendData(s, prefix+"pingup:madmeg:123:"+key);
         System.out.println(ClientSocket.getData(s).readLine());
         s.close();
 
         s = ClientSocket.connect();
-        ClientSocket.sendData(s, prefix+"postglobal:madmeg:123:hello global chat");
+        ClientSocket.sendData(s, prefix+"postglobal:madmeg:123:"+key+":hello global chat");
         System.out.println(ClientSocket.getData(s).readLine());
         s.close();
 
         s = ClientSocket.connect();
-        ClientSocket.sendData(s, prefix+"pinggetglobal:madmeg:123");
+        ClientSocket.sendData(s, prefix+"pinggetglobal:madmeg:123:"+key);
         System.out.println(ClientSocket.getData(s).readLine());
         s.close();
 
         s = ClientSocket.connect();
-        ClientSocket.sendData(s, prefix+"postglobal:madmeg:123:wag1");
+        ClientSocket.sendData(s, prefix+"postglobal:madmeg:123:"+key+":wag1");
         System.out.println(ClientSocket.getData(s).readLine());
         s.close();
 
         s = ClientSocket.connect();
-        ClientSocket.sendData(s, prefix+"pinggetglobal:madmeg:123");
+        ClientSocket.sendData(s, prefix+"pinggetglobal:madmeg:123:"+key);
         System.out.println(ClientSocket.getData(s).readLine());
         s.close();
 

@@ -17,7 +17,7 @@ import java.net.Socket
 class DmUser: Command() {
     override fun onCall(socket: Socket, command: List<String>, fromClient: Client) {
         //val fromClient = clientManager.getClientFromUuid(command[3])!!
-        val toClient = clientManager.getClientFromUuid(command[4])
+        val toClient = clientManager.getClientFromUuid(command[5])
         if(toClient == null){
             Sockets().sendData(socket, "server:dmuser:error1")
             return
@@ -30,7 +30,7 @@ class DmUser: Command() {
             Sockets().sendData(socket, "server:dmuser:error3")
             return
         }
-        val msg = command[5]
+        val msg = command[6]
         if(toClient.messages.containsKey(fromClient)) {
             val msgList = toClient.messages[fromClient]!!
             msgList.add(msg)

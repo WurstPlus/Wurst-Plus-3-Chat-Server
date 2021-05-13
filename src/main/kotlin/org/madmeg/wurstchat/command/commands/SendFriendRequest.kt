@@ -17,7 +17,7 @@ import java.net.Socket
 class SendFriendRequest: Command() {
     override fun onCall(socket: Socket, command: List<String>, fromClient: Client) {
         //val fromClient = clientManager.getClientFromUuid(command[3])!!
-        val toClient = clientManager.getClientFromUuid(command[4])!!
+        val toClient = clientManager.getClientFromUuid(command[5])!!
         if (toClient.friends.containsKey(fromClient)){
             Sockets().sendData(socket, "server:sendfriendrq:error1")
             return

@@ -21,11 +21,11 @@ class LoadData {
         val element = jsonParser.parse(reader)
         val jsonObject: JsonObject = element.asJsonObject
         for(clients in jsonObject.keySet()){
-            val info = jsonObject.get(clients).asString.split(":")
-            val c = Client(info[0], clients)
+            val clientObject = jsonObject.get(clients).asJsonObject
+            val c = Client(clientObject.get("name").asString, clients)
             clientManager.clients.add(c)
-            c.muted = info[1] == "true"
-            c.key = info[2]
+            c.muted = clientObject.get("muted").asBoolean
+            c.key = clientObject.get("key").asString
         }
     }
 

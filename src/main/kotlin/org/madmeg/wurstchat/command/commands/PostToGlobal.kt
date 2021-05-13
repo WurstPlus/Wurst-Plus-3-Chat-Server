@@ -27,7 +27,7 @@ class PostToGlobal: Command() {
                 count++
             }
         }
-        globalChat.messages.put(count, Pair(fromClient, command[4]))
+        globalChat.messages.put(count, Pair(fromClient, command[5]))
         Sockets().sendData(socket, "server:postglobal:posted")
     }
 }
