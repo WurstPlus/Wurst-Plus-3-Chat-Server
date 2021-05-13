@@ -1,7 +1,9 @@
 package org.madmeg.wurstchat.command
 
-import org.madmeg.wurstchat.command.commands.*
-
+import org.madmeg.wurstchat.command.commands.admin.*
+import org.madmeg.wurstchat.command.commands.message.*
+import org.madmeg.wurstchat.command.commands.ping.*
+import org.madmeg.wurstchat.command.commands.client.*
 
 /**
  * @author Madmegsox1
@@ -17,6 +19,8 @@ class Commands {
         //CLIENT
         commands.add(NewClient())
         commands.add(GetClientFromUuid())
+        commands.add(AcceptFriendRequest())
+        commands.add(SendFriendRequest())
 
         //MESSAGE
         commands.add(DmUser())

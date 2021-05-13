@@ -1,7 +1,6 @@
-package org.madmeg.wurstchat.command.commands
+package org.madmeg.wurstchat.command.commands.message
 
 import org.madmeg.wurstchat.client.Client
-import org.madmeg.wurstchat.clientManager
 import org.madmeg.wurstchat.command.Command
 import org.madmeg.wurstchat.command.Register
 import org.madmeg.wurstchat.command.Types

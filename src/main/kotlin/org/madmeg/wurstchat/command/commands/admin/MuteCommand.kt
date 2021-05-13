@@ -1,4 +1,4 @@
-package org.madmeg.wurstchat.command.commands
+package org.madmeg.wurstchat.command.commands.admin
 
 import org.madmeg.wurstchat.client.Client
 import org.madmeg.wurstchat.clientManager

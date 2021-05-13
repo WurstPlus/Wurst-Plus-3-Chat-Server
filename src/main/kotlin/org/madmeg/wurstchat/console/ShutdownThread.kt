@@ -1,13 +1,13 @@
 package org.madmeg.wurstchat.console
 
-import com.google.gson.JsonArray
-import com.google.gson.JsonObject
+import com.google.gson.*
 import org.madmeg.wurstchat.clientManager
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
 import java.nio.file.Files
 import java.nio.file.Paths
+
 
 /**
  * @author Madmegsox1
@@ -42,8 +42,11 @@ class ShutdownThread: Thread() {
             Files.createDirectories(Paths.get("db\\"))
         }
         try {
+            val gson = GsonBuilder().setPrettyPrinting().create()
             val fileWriter = FileWriter(file)
-            fileWriter.write(mainObject.toString())
+            val jp = JsonParser()
+            val je: JsonElement = jp.parse(mainObject.toString())
+            fileWriter.write(gson.toJson(je))
             fileWriter.close()
             file.createNewFile()
         }catch (e: IOException){
@@ -66,7 +69,10 @@ class ShutdownThread: Thread() {
         }
         try {
             val fileWriter = FileWriter(file)
-            fileWriter.write(mainObject.toString())
+            val gson = GsonBuilder().setPrettyPrinting().create()
+            val jp = JsonParser()
+            val je: JsonElement = jp.parse(mainObject.toString())
+            fileWriter.write(gson.toJson(je))
             fileWriter.close()
             file.createNewFile()
         }catch (e: IOException){

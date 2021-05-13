@@ -1,4 +1,4 @@
-package org.madmeg.wurstchat.command.commands
+package org.madmeg.wurstchat.command.commands.client
 
 import org.madmeg.wurstchat.client.Client
 import org.madmeg.wurstchat.clientManager
@@ -16,13 +16,13 @@ import java.net.Socket
 @Register("SendFriendRequest", Types.CLIENT, "sendfriendrq")
 class SendFriendRequest: Command() {
     override fun onCall(socket: Socket, command: List<String>, fromClient: Client) {
-        //val fromClient = clientManager.getClientFromUuid(command[3])!!
         val toClient = clientManager.getClientFromUuid(command[5])!!
         if (toClient.friends.containsKey(fromClient)){
             Sockets().sendData(socket, "server:sendfriendrq:error1")
             return
         }
         toClient.friends.put(fromClient, false)
-        fromClient.friends.put(toClient, false)
+        fromClient.friends.put(toClient, true)
+        Sockets().sendData(socket, "server:sendfriendrq:sent")
     }
 }
