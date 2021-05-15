@@ -9,7 +9,7 @@ This is a server for wurst + 3!
 - <s>Secure key for clients</s>
 - <s>DMs</s>
 - <s>Global Chat</s>
-- Friend's Online
+- <s>Friend's Online</s>
 - Color/rainbow names for donators
 - VPI Chat
 
