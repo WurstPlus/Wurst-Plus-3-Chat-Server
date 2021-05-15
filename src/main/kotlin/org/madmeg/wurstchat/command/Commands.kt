@@ -21,6 +21,7 @@ class Commands {
         commands.add(GetClientFromUuid())
         commands.add(AcceptFriendRequest())
         commands.add(SendFriendRequest())
+        commands.add(GetFriends())
 
         //MESSAGE
         commands.add(DmUser())

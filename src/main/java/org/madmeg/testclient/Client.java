@@ -44,6 +44,29 @@ public class Client {
         System.out.println(ClientSocket.getData(s).readLine());
         s.close();
 
+        String key1 = "7P6TphPnx8Tnlo61gNPEZD+4n6dS9wZ5smznJG1aBJs\u003d";
+
+        s = ClientSocket.connect();
+        ClientSocket.sendData(s, prefix+"pingup:madmeg1:124:"+key1);
+        System.out.println(ClientSocket.getData(s).readLine());
+        s.close();
+
+        s = ClientSocket.connect();
+        ClientSocket.sendData(s, prefix+"sendfriendrq:madmeg1:124:"+key1+":123");
+        System.out.println(ClientSocket.getData(s).readLine());
+        s.close();
+
+        s = ClientSocket.connect();
+        ClientSocket.sendData(s, prefix+"acceptfriendrq:madmeg:123:"+key+":124:true");
+        System.out.println(ClientSocket.getData(s).readLine());
+        s.close();
+
+        s = ClientSocket.connect();
+        ClientSocket.sendData(s, prefix+"getfriends:madmeg:123:"+key);
+        System.out.println(ClientSocket.getData(s).readLine());
+        s.close();
+
+
         s = ClientSocket.connect();
         ClientSocket.sendData(s, prefix+"shutdown:133333");
         System.out.println(ClientSocket.getData(s).readLine());
