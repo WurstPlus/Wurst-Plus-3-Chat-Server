@@ -2,6 +2,7 @@ package org.madmeg.wurstchat.networking
 
 import org.madmeg.wurstchat.Main
 import org.madmeg.wurstchat.clientManager
+import org.madmeg.wurstchat.command.Types
 import org.madmeg.wurstchat.console.Print
 import org.madmeg.wurstchat.getIllegalChars
 import java.net.Socket
@@ -12,9 +13,9 @@ import java.net.Socket
  */
 
 
-class ClientThread(socket: Socket, parent: Main) : Thread() {
+class ClientThread(socket: Socket, parent: Main.Companion) : Thread() {
     val socket: Socket = socket
-    val parent: Main = parent
+    val parent: Main.Companion = parent
     override fun run() {
         handleClient()
         parent.clientThreads.remove(this)
@@ -39,13 +40,16 @@ class ClientThread(socket: Socket, parent: Main) : Thread() {
                 if (command[1] == c.syntax && command[0] == "client") {
                     try {
                         if (c.secureKey == "") {
-                            c.onCall(socket, command)
-                            val client = clientManager.getClientFromUuid(command[3])!!
-                            if(command[2] != client.username|| command[4] != client.key){
-                                Sockets().sendData(socket, "server:error4")
-                                return
+                            if(c.type == Types.NOPRAM) {
+                                c.onCall(socket, command)
+                            }else {
+                                val client = clientManager.getClientFromUuid(command[3])!!
+                                if (command[2] != client.username || command[4] != client.key) {
+                                    Sockets().sendData(socket, "server:error4")
+                                    return
+                                }
+                                c.onCall(socket, command, client)
                             }
-                            c.onCall(socket, command, client)
                         } else if (c.secureKey == command[2]) {
                             c.onCall(socket, command)
                         }

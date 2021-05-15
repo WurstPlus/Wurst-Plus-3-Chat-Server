@@ -10,5 +10,6 @@ enum class Types {
     MESSAGE,
     CLIENT,
     PING,
-    ADMIN
+    ADMIN,
+    NOPRAM
 }
