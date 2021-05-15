@@ -5,8 +5,8 @@ This is a server for wurst + 3!
 
 ## Ideas/TODO
 
-- Friend requests
-- Secure key for clients
+- <s>Friend requests</s>
+- <s>Secure key for clients</s>
 - <s>DMs</s>
 - <s>Global Chat</s>
 - Friend's Online
