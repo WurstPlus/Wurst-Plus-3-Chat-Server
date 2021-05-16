@@ -18,6 +18,5 @@ class GetClientFromUuid: Command() {
     override fun onCall(socket: Socket, command: List<String>) {
         val c = clientManager.getClientFromUuid(command[2])!!
         Sockets().sendData(socket, "server:getclientuuid:${c.username}:${c.uuid}:${c.muted}")
-        Print("Sent ${c.username}:${c.uuid}:${c.muted}")
     }
 }

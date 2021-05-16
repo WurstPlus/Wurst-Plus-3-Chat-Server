@@ -63,12 +63,14 @@ class Admin {
         val s =Sockets().receiveSocket()
         Sockets().sendData(s , "client:getclientuuid:$user")
         val data = Sockets().receiveData(s)
-        if(data.readLine().contains("server:getclientuuid:")){
-            println(data.readLine())
-            val spilt = data.readLine().split(":")
+        val spilt = data.readLine().split(":")
+        try {
             println("Username: ${spilt[2]}")
             println("Uuid: ${spilt[3]}")
             println("isMuted: ${spilt[4]}")
+        }catch (e: IndexOutOfBoundsException){
+            println("Error!")
         }
+
     }
 }
