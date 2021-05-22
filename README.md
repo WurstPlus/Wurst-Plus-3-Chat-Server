@@ -3,7 +3,6 @@
 
 This is a server for wurst + 3!
 
-Almost done
 
 ## Ideas/TODO
 
