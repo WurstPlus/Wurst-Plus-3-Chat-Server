@@ -14,7 +14,7 @@ import java.net.Socket
  * @since 09/05/2021
  */
 
-@Register("NewClient", Types.CLIENT, "newclient")
+@Register("NewClient", Types.NOPRAM, "newclient")
 class NewClient : Command() { // name = 2 uuid = 3
     override fun onCall(socket: Socket, command: List<String>) {
         var flag = false
